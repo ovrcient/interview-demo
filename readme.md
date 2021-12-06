@@ -26,7 +26,7 @@ per month and total.
 
 ```shell
 # Download code from repository
-git clone https://github.com/rodrigoieh/pub-interview-demo
+git clone https://github.com/rodrigoieh/interview-demo.git
 
 # Execute
 mvn spring-boot:run
