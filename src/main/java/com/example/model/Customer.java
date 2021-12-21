@@ -7,14 +7,15 @@ import java.util.Set;
 @Table(name = "customers")
 public class Customer {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "idgen")
     @Column(name = "id")
     private Integer id;
 
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, orphanRemoval = false)
+    @JoinColumn(name = "customer_id")
     private Set<Transaction> transactions;
 
     public Customer() {
@@ -49,6 +50,16 @@ public class Customer {
 
     public void setTransactions(Set<Transaction> transactions) {
         this.transactions = transactions;
+    }
+
+    public void addTransaction(Transaction transaction) {
+        transactions.add(transaction);
+        transaction.setCustomer(this);
+    }
+
+    public void removeTransaction(Transaction transaction) {
+        transactions.remove(transaction);
+        transaction.setCustomer(null);
     }
 
     @Override

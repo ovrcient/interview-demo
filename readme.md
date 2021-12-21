@@ -66,14 +66,24 @@ mvnw spring-boot:run
 
 ### Additional Requirements
 
-- [ ] Follow standard best practices for structuring the code.
+- [x] Follow standard best practices for structuring the code.
 - [x] Prepare and provide Test Data along with the code.
 - [ ] Both positive and negative unit test cases for all operations – to be run as part of the build process.
 - [x] Implement RestAPI’s for all CRUD operations – in this case – creating/updating transactions, calculating and
   providing reward information for a User. (Java Backend/Full Stack).
+    - [x] customers
+        - [x] get
+        - [x] post
+        - [x] put
+        - [x] delete
+    - [ ] transactions
+        - [ ] get
+        - [ ] post
+        - [ ] put
+        - [ ] delete
 - [ ] Consistent error handling and reporting of all failures including unexpected error conditions.
 - [x] Use of appropriate logging levels, framework.
-- [ ] Reward calculation logic should be accurate.
+- [x] Reward calculation logic should be accurate.
 - [x] Readme file is mandatory – must contain the steps required to build and run/test the code
 - [x] The solution must be checked into GitHub (provide a public GitHub url).
 

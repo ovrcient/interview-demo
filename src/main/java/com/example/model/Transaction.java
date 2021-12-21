@@ -9,7 +9,7 @@ import java.util.Date;
 @Table(name = "transactions")
 public class Transaction {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "idgen")
     @Column(name = "id")
     private Integer id;
 
@@ -69,15 +69,11 @@ public class Transaction {
         this.date = date;
     }
 
-    public Integer getPoints() {
-        int points = 0;
-        if (amount > 50 && amount <= 100) {
-            points += (amount - 50);
-        } else if (amount > 100) {
-            points += 50;
-            points += (amount - 100) * 2L;
-        }
-        return points;
+    public Double getPoints() {
+        if (amount <= 50) return 0.D;
+        else if (amount <= 100) return amount - 50;
+        else return ((amount - 100) * 2) + amount - 50;
+        // else return ((transaction - 100) * 2) + 50;
     }
 
     @Override

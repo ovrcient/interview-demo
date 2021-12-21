@@ -74,12 +74,13 @@ public class SwaggerConfig {
         return SecurityContext
                 .builder()
                 .securityReferences(defaultAuth())
-                .forPaths(PathSelectors.ant("/api/**"))
+//                .forPaths(PathSelectors.ant("/api/**"))
+                .forPaths(PathSelectors.ant("/**"))
                 .build();
     }
 
     List<SecurityReference> defaultAuth() {
-        AuthorizationScope authorizationScope = new AuthorizationScope("ADMIN", "accessEverything");
+        AuthorizationScope authorizationScope = new AuthorizationScope("ADMIN", "admin account");
         AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
         authorizationScopes[0] = authorizationScope;
         return Collections.singletonList(new SecurityReference("Token Access", authorizationScopes));
